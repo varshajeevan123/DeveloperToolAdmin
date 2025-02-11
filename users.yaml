@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: varshajeevan123
+  annotations:
+    backstage.io/role: developer
+spec:
+  profile:
+    displayName: Varsha J
+    email: varsha.jeevan91@gmail.com
+  memberOf: []
