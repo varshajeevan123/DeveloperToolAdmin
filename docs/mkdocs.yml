@@ -1,4 +1,4 @@
-site_name: Developer Tool
+site_name: Developer Tool Admin Docs
 nav:
   - Home: index.md
   - Features: features.md
