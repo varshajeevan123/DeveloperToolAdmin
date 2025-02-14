@@ -1,17 +1,9 @@
-apiVersion: backstage.io/v1alpha1
-kind: API
-metadata:
-  name: astra-api
-  description: Astra API Swagger documentation
 spec:
-  type: openapi
-  lifecycle: production
-  owner: engineering
-  definition:
+  definition: |
     openapi: 3.0.0
     info:
       title: Astra 3.N - OpenAPI 3.0
-      description: >-
+      description: >
         This is the Astra API Swagger documentation. This server is based on the
         OpenAPI 3.0 specification.
       termsOfService: http://swagger.io/terms/
