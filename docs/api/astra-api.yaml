@@ -1,166 +1,294 @@
-apiVersion: backstage.io/v1alpha1
-kind: API
-metadata:
-  name: astra-api
-  description: Astra API Swagger documentation
-spec:
-  type: openapi
-  lifecycle: production
-  owner: engineering
-  definition: |
-    openapi: 3.0.0
-    info:
-      title: Astra 3.N - OpenAPI 3.0
-      description: This is the Astra API Swagger documentation. This server is based on the OpenAPI 3.0 specification.
-      termsOfService: http://swagger.io/terms/
-      version: 1.0.0
-    externalDocs:
-      description: Find out more about Swagger
-      url: http://swagger.io
-    servers:
-      - url: "http://{host}:{port}"
-        description: Base URL for API requests
-        variables:
-          host:
-            default: "127.0.0.1"
-            description: API Host
-          port:
-            default: "443"
-            description: API Port
-    security:
-      - BasicAuth: []
-    components:
-      securitySchemes:
-        BasicAuth:
-          type: http
-          scheme: basic
-      schemas:
-        Bundle:
+openapi: 3.0.0
+info:
+  title: Astra 3.N - OpenAPI 3.0
+  description: >-
+    This is the Astra API Swagger documentation.This server is based on the
+    OpenAPI 3.0 specification.
+  termsOfService: http://swagger.io/terms/
+  version: 1.0.0
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+  - url: http://{baseUrl}
+    description: Base URL for API requests
+    variables:
+      baseUrl:
+        default: 127.0.0.1:443
+        description: Your local Astra API server IP address
+tags:
+  - name: Astra Data
+    description: Information about procedure/activity carried on the astra device.
+paths:
+  /cyclecount:
+    get:
+      tags:
+        - Astra Data
+      summary: Get cycle count data
+      description: >-
+        Get the information for the daily cycle count and lifetime cycle count
+        on the astra device.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Resource not found
+  /disinfectioncycle:
+    get:
+      tags:
+        - Astra Data
+      summary: Get disinfection cycle data
+      description: >-
+        Get the information for the last disinfection cycle procedure performed
+        on astra device.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bundle'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Resource not found
+  /wildcycle:
+    get:
+      tags:
+        - Astra Data
+      summary: Get wild cycle data
+      description: >-
+        Get the information for the last wild cycle procedure performed on astra
+        device.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bundle'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Resource not found
+  /hldreplacedCycle:
+    get:
+      tags:
+        - Astra Data
+      summary: Get HLD replaced data
+      description: >-
+        Get the information for the last HLD Replaced procedure performed on the
+        astra device.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bundle'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Resource not found
+  /waterfilterreplaced:
+    get:
+      tags:
+        - Astra Data
+      summary: Get water filter replaced data
+      description: >-
+        Get the information for the last water filter replaced procedure
+        performed on the astra device.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bundle'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Resource not found
+  /airfilterreplaced:
+    get:
+      tags:
+        - Astra Data
+      summary: Get air filter replaced data
+      description: >-
+        Get the information for the last air filter replaced procedure performed
+        on the astra device.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bundle'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Resource not found
+  /firmwarereplaced:
+    get:
+      tags:
+        - Astra Data
+      summary: Get firmware replaced data
+      description: >-
+        Get the information for the last firmware replaced procedure performed
+        on the astra device.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bundle'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Resource not found
+  /teststripbottleenrolled:
+    get:
+      tags:
+        - Astra Data
+      summary: Get test strip bottle enrolled data
+      description: >-
+        Get the information for the last test strip bottle enrolled procedure
+        performed on the astra device.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bundle'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Resource not found
+  /annualcalibrationconductivityprobereplaced:
+    get:
+      tags:
+        - Astra Data
+      summary: Get annual calibration and conductivity probe replaced data
+      description: >-
+        Get the information for the last annual calibration and conductivity
+        probe replaced procedure performed on the astra device.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bundle'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Resource not found
+  /astrastatus:
+    get:
+      tags:
+        - Astra Data
+      summary: Get astra device status data
+      description: >-
+        Get the status information for the last astra device cycle procedure
+        performed on the astra device.
+      responses:
+        '200':
+          description: Sucessful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Resource not found
+          
+security:
+  - BasicAuth: []
+components:
+  schemas:
+    Bundle:
+      type: object
+      properties:
+        resourceType:
+          type: string
+          example: Bundle
+        identifier:
           type: object
           properties:
-            resourceType:
-              type: string
-              example: Bundle
-            identifier:
+            type:
               type: object
               properties:
-                type:
-                  type: object
-                  properties:
-                    text:
-                      type: string
-                      example: Astra Event
-                      enum:
-                        - Disinfection Cycle
-                        - Wild Cycle
-                        - HLD Replaced
-                        - Test Strip Bottle Enrolled
-                        - Water Filter Replaced
-                        - Air Filter Replaced
-                        - Firmware Replaced
-                        - Annual Calibration and Conductivity Probe Replaced
-            type:
-              type: string
-              example: collection
-            entry:
-              type: array
-              items:
-                $ref: '#/components/schemas/resource'
-        resource:
-          type: object
-          properties:
-            resourceType:
-              type: string
-              example: Procedure
-              enum:
-                - Procedure
-                - Substance
-                - Practitioner
-                - Organization
-                - Device
-                - DeviceDefinition
-                - Observation
-            status:
-              type: string
-              example: completed
-              enum:
-                - completed
-                - not done
-        Device:
-          type: object
-          properties:
-            resourceType:
-              type: string
-              example: Astra Device
-            extension:
-              type: array
-              items:
-                $ref: '#/components/schemas/Extension'
-        Extension:
-          type: object
-          properties:
-            url:
-              type: string
-              example: Cycle Count
-              enum:
-                - Daily Cycle Count
-                - Lifetime Cycle Count
-            valueInteger:
-              type: integer
-              example: 0
-    tags:
-      - name: Astra Data
-        description: Information about procedure/activity carried on the Astra device.
-    paths:
-      /cyclecount:
-        get:
-          tags:
-            - Astra Data
-          summary: Get cycle count data
-          description: Get the information for the daily and lifetime cycle count on the Astra device.
-          responses:
-            '200':
-              description: Successful response
-              content:
-                application/json:
-                  schema:
-                    $ref: '#/components/schemas/Device'
-            '401':
-              description: Unauthorized
-            '404':
-              description: Resource not found
-      /disinfectioncycle:
-        get:
-          tags:
-            - Astra Data
-          summary: Get disinfection cycle data
-          description: Get the information for the last disinfection cycle procedure performed on the Astra device.
-          responses:
-            '200':
-              description: Successful response
-              content:
-                application/json:
-                  schema:
-                    $ref: '#/components/schemas/Bundle'
-            '401':
-              description: Unauthorized
-            '404':
-              description: Resource not found
-      /astrastatus:
-        get:
-          tags:
-            - Astra Data
-          summary: Get Astra device status data
-          description: Get the status information for the last Astra device cycle procedure performed on the device.
-          responses:
-            '200':
-              description: Successful response
-              content:
-                application/json:
-                  schema:
-                    $ref: '#/components/schemas/Device'
-            '401':
-              description: Unauthorized
-            '404':
-              description: Resource not found
-
+                text:
+                  type: string
+                  example: Astra Event
+                  enum:
+                    - Disinfection Cycle
+                    - Wild Cycle
+                    - HLD Replaced
+                    - Test Strip Bottle Enrolled
+                    - Water Filter Replaced
+                    - Air Filter Replaced
+                    - Firmware Replaced
+                    - Annual Calibration and Conductivity Probe Replaced
+        type:
+          type: string
+          example: collection
+        entry:
+          type: array
+          items:
+            $ref: '#/components/schemas/resource'
+    resource:
+      type: object
+      properties:
+        resourceType:
+          type: string
+          example: Procedure
+          enum:
+            - Procedure
+            - Substance
+            - Practitioner
+            - Organization
+            - Device
+            - DeviceDefinition
+            - Observation
+        status:
+          type: string
+          example: completed
+          enum:
+            - completed
+            - not done
+    Device:
+      type: object
+      properties:
+        resourceType:
+          type: string
+          example: Astra Device
+        extension:
+          type: array
+          items:
+            $ref: '#/components/schemas/Extension'
+    Extension:
+      type: object
+      properties:
+        url:
+          type: string
+          example: Cycle Count
+          enum:
+            - Daily Cycle Count
+            - Lifetime Cycle Count
+        valueInteger:
+          type: integer
+          example: 0
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
