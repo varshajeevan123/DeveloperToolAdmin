@@ -52,5 +52,17 @@
       "prettier --write"
     ]
   },
-  "packageManager": "yarn@4.4.1"
+  "backstage": {
+    "webpack": {
+      "externals": {
+        "cpu-features": "commonjs cpu-features"
+      }
+    }
+  },
+  "packageManager": "yarn@4.4.1",
+  "dependencies": {
+    "@backstage/core-plugin-api": "^1.10.3",
+    "@backstage/integration-react": "^1.2.3",
+    "@backstage/plugin-auth-backend": "^0.24.2"
+  }
 }

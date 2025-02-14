@@ -1,9 +1,9 @@
 {
-  "short_name": "Backstage",
-  "name": "Backstage",
+  "short_name": "Dev Portal",
+  "name": "Dev POrtal",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "favicon.png",
       "sizes": "48x48",
       "type": "image/png"
     }

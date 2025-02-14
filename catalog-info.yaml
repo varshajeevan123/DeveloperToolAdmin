@@ -1,7 +1,7 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: simple-api-call
+  name: simple component
   description: An example of a Backstage application.
 spec:
   type: website
@@ -11,8 +11,8 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
-  name: jsonplaceholder-api
-  description: Sample API from JSONPlaceholder
+  name: demo-post-api
+  description: Sample API for a post method
   tags:
     - rest
 spec:
@@ -22,7 +22,7 @@ spec:
   definition: |
     openapi: 3.0.0
     info:
-      title: JSONPlaceholder API
+      title: Demo Post API
       version: 1.0.0
     servers:
       - url: https://jsonplaceholder.typicode.com
@@ -46,3 +46,16 @@ spec:
           responses:
             "201":
               description: Created
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: software-documentation
+  description: Documentation for Developer.
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+spec:
+  type: service
+  lifecycle: production
+  owner: user:default/varshajeevan123
+

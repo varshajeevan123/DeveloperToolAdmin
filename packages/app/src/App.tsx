@@ -37,9 +37,21 @@ import { AppRouter, FlatRoutes } from '@backstage/core-app-api';
 import { CatalogGraphPage } from '@backstage/plugin-catalog-graph';
 import { RequirePermission } from '@backstage/plugin-permission-react';
 import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
-import { githubAuthApiRef } from '@backstage/core-plugin-api';
+import { BackstageIdentityApi, githubAuthApiRef, ProfileInfoApi, SessionApi } from '@backstage/core-plugin-api';
+import { createApiRef } from '@backstage/core-plugin-api';
+ 
+const guestAuthApiRef = createApiRef <ProfileInfoApi & BackstageIdentityApi & SessionApi>({
+  id: 'guest-auth-provider',
+  
+});
 const providers: SignInProviderConfig[] = [
-  'guest', // ✅ Guest Login (Backstage recognizes 'guest' automatically)
+  {
+    id: 'guest', // ✅ GitHub Login
+    title: 'guest',
+    message: 'Sign in using guest',
+    apiRef: guestAuthApiRef, // ✅ Correct API reference
+  }
+  , // ✅ Guest Login (Backstage recognizes 'guest' automatically)
   {
     id: 'github', // ✅ GitHub Login
     title: 'GitHub',
@@ -83,13 +95,15 @@ const routes = (
     </Route>
     <Route path="/docs" element={<TechDocsIndexPage />} />
     <Route
-      path="/docs/:namespace/:kind/:name/*"
-      element={<TechDocsReaderPage />}
-    >
-      <TechDocsAddons>
-        <ReportIssue />
-      </TechDocsAddons>
-    </Route>
+      path="/catalog/:namespace/:kind/:name/*"
+      element={
+        <TechDocsReaderPage>
+          <TechDocsAddons>
+            <ReportIssue />
+          </TechDocsAddons>
+        </TechDocsReaderPage>
+      }
+    />
     <Route path="/create" element={<ScaffolderPage />} />
     <Route path="/api-docs" element={<ApiExplorerPage />} />
     <Route

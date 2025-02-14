@@ -1,0 +1,7 @@
+site_name: Developer Tool
+nav:
+  - Home: index.md
+  - Features: features.md
+  - Setup: setup.md
+plugins:
+  - techdocs-core
