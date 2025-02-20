@@ -17,22 +17,22 @@ spec:
   type: service
   lifecycle: production
   owner: guest-user
-#---
-# apiVersion: backstage.io/v1alpha1
-# kind: API
-# metadata:
-#   name: civco-api
-#   description: Sample CIVCO API
-#   tags:
-#     - rest
-#   # annotations:
-#   #   backstage.io/techdocs-ref: dir:.
-#   #   my-custom-field: "Custom data about this API"
-# spec:
-#   type: openapi
-#   lifecycle: production
-#   owner: user:default/varshajeevan123
-#   definition: ./docs/api/openapi.yaml
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: civco-api
+  description: Sample CIVCO API
+  tags:
+    - rest
+  # annotations:
+  #   backstage.io/techdocs-ref: dir:.
+  #   my-custom-field: "Custom data about this API"
+spec:
+  type: openapi
+  lifecycle: production
+  owner: user:default/varshajeevan123
+  definition: ./docs/api/openapi.yaml
 ---
 apiVersion: backstage.io/v1alpha1
 kind: API
@@ -87,7 +87,7 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: civco developer tool documentation
+  name: software-documentation
   description: Documentation for Developer.
   annotations:
     backstage.io/techdocs-ref: dir:.
