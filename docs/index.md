@@ -1,5 +1,5 @@
 ### index.md
-# 📖 Developer Tool : CIVOCO
+# 📖 Developer Tool : CIVCO
 
 Welcome to the **Developer Tool for CIVCO**! 🎉
 
