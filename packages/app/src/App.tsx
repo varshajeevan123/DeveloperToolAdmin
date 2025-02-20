@@ -39,7 +39,9 @@ import { RequirePermission } from '@backstage/plugin-permission-react';
 import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
 import { BackstageIdentityApi, githubAuthApiRef, ProfileInfoApi, SessionApi } from '@backstage/core-plugin-api';
 import { createApiRef } from '@backstage/core-plugin-api';
- 
+import { myTheme } from './components/theme/mytheme';
+import { UnifiedThemeProvider } from '@backstage/theme';
+
 const guestAuthApiRef = createApiRef <ProfileInfoApi & BackstageIdentityApi & SessionApi>({
   id: 'guest-auth-provider',
   
@@ -81,6 +83,15 @@ const app = createApp({
   components: {
     SignInPage: props => <SignInPage {...props} auto providers={providers} />,
   },
+  //   themes: [{
+  //   id: 'my-theme',
+  //   title: 'My Custom Theme',
+  //   variant: 'light',
+  //   // icon: <LightIcon />,
+  //   Provider: ({ children }) => (
+  //     <UnifiedThemeProvider theme={myTheme} children={children} />
+  //   ),
+  // }]
 });
 
 const routes = (

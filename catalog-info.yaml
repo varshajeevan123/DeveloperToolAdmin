@@ -1,12 +1,38 @@
+# apiVersion: backstage.io/v1alpha1
+# kind: Component
+# metadata:
+#   name: simple component
+#   description: An example of a Backstage application.
+# spec:
+#   type: website
+#   owner: user:default/varshajeevan123
+#   lifecycle: experimental
+# ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: simple component
-  description: An example of a Backstage application.
+  name: sample service
+  description: This is a sample service
 spec:
-  type: website
+  type: service
+  lifecycle: production
+  owner: guest-user
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: civco-api
+  description: Sample CIVCO API
+  tags:
+    - rest
+  # annotations:
+  #   backstage.io/techdocs-ref: dir:.
+  #   my-custom-field: "Custom data about this API"
+spec:
+  type: openapi
+  lifecycle: production
   owner: user:default/varshajeevan123
-  lifecycle: experimental
+  definition: ./docs/api/openapi.yaml
 ---
 apiVersion: backstage.io/v1alpha1
 kind: API
@@ -46,7 +72,7 @@ spec:
           responses:
             "201":
               description: Created
----
+# ---
 # apiVersion: backstage.io/v1alpha1
 # kind: API
 # metadata:
@@ -56,7 +82,7 @@ spec:
 #   type: openapi
 #   lifecycle: production
 #   owner: user:default/varshajeevan123
-#   definition: https://app.swaggerhub.com/apis/abc-d18/astra-3_n_open_api_3_0/1.0.0
+#   definition: file:./docs/api/openapi.yaml
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
@@ -69,5 +95,15 @@ spec:
   type: service
   lifecycle: production
   owner: user:default/varshajeevan123
-
-
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: sample-service
+  description: This is a sample service
+  annotations:
+    backstage.io/visibility: "guest"
+spec:
+  type: service
+  lifecycle: production
+  owner: group:guests

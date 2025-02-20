@@ -1,0 +1,31 @@
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: guest
+  description: Guest user with default access
+spec:
+  profile:
+    displayName: Guest User
+    email: guest@backstage.local
+  memberOf: [default-group]
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: default-group
+  description: Default group for guest users
+spec:
+  type: team
+  children: []
+  members:
+    - guest
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: guest-service
+  description: Default service for guest users
+spec:
+  type: service
+  lifecycle: unknown
+  owner: guest

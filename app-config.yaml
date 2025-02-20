@@ -101,12 +101,19 @@ catalog:
       target: ../../examples/org.yaml
       rules:
         - allow: [User, Group]
+    # Default ownership for guest users
+    - type: file
+      target: ../../catalog-entities.yaml
   import:
     entityFilename: catalog-info.yaml
     pullRequestBranchName: backstage-integration
   rules:
     - allow: [Component, System, API, Resource, User, Location]
-  
+  defaultNamespace: default
+  policies:
+    - allowGuest: true
+  processingIntervalSeconds: 30
+  orphanStrategy: adopt
 
     ## Uncomment these lines to add more example data
     # - type: url
