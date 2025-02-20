@@ -14,7 +14,7 @@ const LogoFull = () => {
   const classes = useStyles();
 
   return (
-   <img src='https://www.citrusinformatics.com/wp-content/uploads/2023/12/citrus-informatics.png' width={160} height={50} alt =""/>
+   <img src='https://vwuniforms.com/cdn/shop/files/Screenshot_2024-08-07_152044.jpg?v=1723062120' width={190} height={205} alt =""/>
     // <svg
     //   className={classes.svg}
     //   xmlns="http://www.w3.org/2000/svg"

@@ -8,6 +8,10 @@
  
 import { createBackend } from '@backstage/backend-defaults';
  
+import dotenv from 'dotenv';
+
+dotenv.config({ path: '../../../.env' });
+
 const backend = createBackend();
 
 backend.add(import('@backstage/plugin-app-backend'));
