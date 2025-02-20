@@ -42,7 +42,7 @@ export const myTheme = createUnifiedTheme({
             warningBackground: '#8f5e15',
             infoBackground: '#70c1e7', // Light blue for info background
             navigation: {
-                background: '#1a1a1a', // Black background for the side menu
+                background: '#005A9C', // Black background for the side menu
                 indicator: '#8f5e15', // Orange indicator color
                 color: '#ffffff', // White text color for navigation items
                 selectedColor: '#d5d6db', // Light gray color for selected navigation items

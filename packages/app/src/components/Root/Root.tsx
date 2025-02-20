@@ -27,6 +27,11 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import { MyGroupsSidebarItem } from '@backstage/plugin-org';
 import GroupIcon from '@material-ui/icons/People';
+import './Root.css';
+import { FaDiscord } from 'react-icons/fa';
+import QuizIcon from '@mui/icons-material/Quiz';
+import FeedbackIcon from '@mui/icons-material/Feedback';
+import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
 
 const useSidebarLogoStyles = makeStyles({
   root: {
@@ -58,39 +63,58 @@ const SidebarLogo = () => {
 
 export const Root = ({ children }: PropsWithChildren<{}>) => (
   <SidebarPage>
-    <Sidebar>
-      <SidebarLogo />
-      <SidebarGroup label="Search" icon={<SearchIcon />} to="/search">
-        <SidebarSearchModal />
-      </SidebarGroup>
+  <Sidebar>
+    <SidebarLogo />
+    <SidebarGroup label="Search" icon={<SearchIcon />} to="/search">
+      <SidebarSearchModal />
+    </SidebarGroup>
+    <SidebarDivider />
+    <SidebarGroup label="Menu" icon={<MenuIcon />}>
+     
+      <SidebarItem icon={HomeIcon} to="" text="Home" />
+      <MyGroupsSidebarItem
+        singularTitle="My Group"
+        pluralTitle="My Groups"
+        icon={GroupIcon}
+      />
+      <SidebarItem icon={ExtensionIcon} to="api-docs" text="APIs" />
+      <SidebarItem icon={LibraryBooks} to="docs" text="Docs" />
+      <SidebarItem icon={CreateComponentIcon} to="create" text="Create..." />
+     
       <SidebarDivider />
-      <SidebarGroup label="Menu" icon={<MenuIcon />}>
-        {/* Global nav, not org-specific */}
-        <SidebarItem icon={HomeIcon} to="" text="Home" />
-        <MyGroupsSidebarItem
-          singularTitle="My Group"
-          pluralTitle="My Groups"
-          icon={GroupIcon}
-        />
-        <SidebarItem icon={ExtensionIcon} to="api-docs" text="APIs" />
-        <SidebarItem icon={LibraryBooks} to="docs" text="Docs" />
-        <SidebarItem icon={CreateComponentIcon} to="create" text="Create..." />
-        {/* End global nav */}
-        <SidebarDivider />
-        <SidebarScrollWrapper>
-          {/* Items in this group will be scrollable if they run out of space */}
-        </SidebarScrollWrapper>
-      </SidebarGroup>
-      <SidebarSpace />
-      <SidebarDivider />
-      <SidebarGroup
-        label="Settings"
-        icon={<UserSettingsSignInAvatar />}
-        to="/settings"
-      >
-        <SidebarSettings />
-      </SidebarGroup>
-    </Sidebar>
-    {children}
-  </SidebarPage>
+    </SidebarGroup>
+    <SidebarGroup label="Menu" icon={<MenuIcon />}>
+      <MyGroupsSidebarItem
+        singularTitle="My Group"
+        pluralTitle="My Groups"
+        icon={GroupIcon}
+      />
+      <SidebarItem
+        icon={FaDiscord}
+        to="https://canary.discord.com/"
+        text="Discord"
+        className="custom-icon"
+      />
+
+      <SidebarItem icon={FeedbackIcon} to="#" text="Feedbacks" />
+      <SidebarItem icon={TipsAndUpdatesIcon} to="#" text="Updates" />
+      <SidebarItem icon={QuizIcon} to="#" text="FAQ" />
+    </SidebarGroup>
+
+    <SidebarDivider />
+    <SidebarSpace />
+    <SidebarScrollWrapper>
+      {/* Items in this group will be scrollable if they run out of space */}
+    </SidebarScrollWrapper>
+    <SidebarDivider />
+    <SidebarGroup
+      label="Settings"
+      icon={<UserSettingsSignInAvatar />}
+      to="/settings"
+    >
+      <SidebarSettings />
+    </SidebarGroup>
+  </Sidebar>
+  {children}
+</SidebarPage>
 );
